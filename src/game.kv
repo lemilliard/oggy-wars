@@ -1,0 +1,46 @@
+#:kivy 1.0.9
+
+<Shooter>:
+    shooter_canon: shooter_canon
+	# I want the tank image to be the bounding box:
+	#size: tank_image.size
+	size: 96, 140
+
+    canvas:
+        Ellipse:
+            size: 96, 140
+            pos: root.pos
+
+	Scatter:
+		id: shooter_canon
+		size: 100, 30
+#		center_y: root.center_y
+#		x: root.center_x
+		do_rotation: False
+		do_scale: False
+		do_translation: False
+
+        canvas:
+            Rectangle:
+                size: 100, 30
+
+<Bullet>:
+    size: 50, 50
+    canvas:
+        Ellipse:
+            pos: self.pos
+            size: self.size
+
+<Game>:
+    shooter1 : shooter1
+    shooter2 : shooter2
+
+    Shooter:
+		id: shooter1
+		x: root.x
+		center_y: root.height/2
+
+	Shooter:
+		id: shooter2
+		x: root.width - self.width
+		center_y: root.height/2
